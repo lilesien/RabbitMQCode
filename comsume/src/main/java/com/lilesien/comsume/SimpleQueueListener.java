@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 public class SimpleQueueListener {
 
     @RabbitListener(queues = {"simple.queue"})
-    public void listenQueue(String msg){
-        System.out.println("消费者接收到消息[" + msg +"]");
+    public void listen1Queue(String msg){
+        System.out.println("消费者1接收到消息[" + msg +"]");
     }
 
 }
