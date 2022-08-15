@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+//@Component,在消费者端使用注解声明后就不需要在客户端进行声明
 public class DeadQueueConfig {
 
     //普通交换机
@@ -34,9 +34,9 @@ public class DeadQueueConfig {
         //声明一些参数，表示当消息变为死信时，发送到哪个交换机
         Map<String, Object> map = new HashMap<>();
         map.put("x-dead-letter-exchange",DEAD_EXCHANGE_NAME);
+        //如果不是Fanout类型的交换机，还需要设置x-dead-letter-routing-key为对应的routingkey
         map.put("x-message-ttl", 10);
-        map.put("x-max-length", 3);
-        return new Queue("deadMessage.queue1",false,false,false,map);
+        return new Queue("deadMessage.queue1",true,false,false,map);
 
     }
 

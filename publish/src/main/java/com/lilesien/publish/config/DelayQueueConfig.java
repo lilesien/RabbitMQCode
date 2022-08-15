@@ -25,7 +25,7 @@ public class DelayQueueConfig {
         //声明交换机的类型，fanout/direct/topic
         arguments.put("x-delayed-type", "direct");
         //返回CustomExchange时需要设置type为x-delay-message，这样才能声明是一个延时队列
-        return new CustomExchange("delay.queue", "x-delay-message", false, false, arguments);
+        return new CustomExchange("delay.exchange", "x-delayed-message", true, false, arguments);
     }
 
     @Bean("delayQueue")

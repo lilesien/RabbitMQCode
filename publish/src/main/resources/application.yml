@@ -5,3 +5,7 @@ spring:
     username: lilesien
     password: 267946
     virtual-host: /
+    #发布消息到交换机后会触发回调方法
+    publisher-confirm-type: correlated
+    #当路由不通时，触发回退方法
+    publisher-returns: true
